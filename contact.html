@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Contact  Private Consultation Portal</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<header>
+  <div class="container header-inner">
+    <h1 class="logo">Emily Carter</h1>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home & Command Center</a></li>
+        <li><a href="about.html">In-Depth Biography</a></li>
+        <li><a href="services.html">Comprehensive Service Suites</a></li>
+        <li><a href="testimonials.html">Verified Success Chronicles</a></li>
+        <li><a href="blog.html">Advanced Intelligence Hub</a></li>
+        <li><a href="contact.html">Private Consultation Portal</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="container">
+    <h2>Initiate a Confidential Consultation to Architect Your Category-Defining, Chart Topping Literary Campaign</h2>
+    <p class="subtitle">Complete the form below or email <a href="mailto:emilycarterr.j.a@gmail.com">emilycarterr.j.a@gmail.com</a></p>
+  </div>
+</section>
+
+<section class="contact-form container">
+  <form action="https://formspree.io/f/mqalonog" method="POST" id="contactForm">
+    <div class="form-row">
+      <label>Full Legal Name or Preferred Professional Moniker
+        <input type="text" name="name" required/>
+      </label>
+      <label>Preferred Business Email Address
+        <input type="email" name="_replyto" required/>
+      </label>
+    </div>
+    <label>Primary Genre Classification & Current Working Title
+      <input type="text" name="title"/>
+    </label>
+    <label>Anticipated Publication Date or Desired Campaign Kickoff
+      <input type="date" name="date"/>
+    </label>
+    <label>Comprehensive Description of Objectives, Obstacles, and Ambitious Outcomes
+      <textarea name="message" rows="6" required></textarea>
+    </label>
+    <button type="submit" class="btn-primary">Send Confidential Brief</button>
+  </form>
+  <div id="successMessage" style="display:none;">
+    <h3>Your message has been successfully submitted.</h3>
+    <p>Redirecting…</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <p>© <span id="year"></span> Emily Carter. All rights reserved.</p>
+    <div class="socials">
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  fetch(this.action, {
+    method: 'POST',
+    body: new FormData(this),
+    headers: { Accept: 'application/json' }
+  }).then(() => {
+    document.getElementById('contactForm').style.display = 'none';
+    document.getElementById('successMessage').style.display = 'block';
+    setTimeout(() => location.reload(), 3000);
+  });
+});
+</script>
+</body>
+</html>
